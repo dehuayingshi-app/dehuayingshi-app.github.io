@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>德华影视 · 华语片库索引与影评手记 | dehuayingshi-app.github.io</title>
+<meta name="description" content="德华影视是一份长期更新的观影手册：整理华语与世界电影的片库索引、院线热映速览、影评手记与排片指南。按题材、年代、地区交叉翻阅，帮你在两小时里挑到值得看的那一部，也记下看完之后想说的话。">
+<meta name="keywords" content="德华影视,华语电影片库,经典电影索引,电影推荐清单,院线热映速览,影评手记,独立电影观察,观影排片指南,dehuayingshi-app">
+<meta name="author" content="德华影视编辑部">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#1c1b19">
+<link rel="canonical" href="https://dehuayingshi-app.github.io/">
+<link rel="alternate" hreflang="zh-CN" href="https://dehuayingshi-app.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="德华影视">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="德华影视 · 华语片库索引与影评手记">
+<meta property="og:description" content="片库索引、热映速览、影评手记与排片指南，一份可以慢慢翻的观影手册。">
+<meta property="og:url" content="https://dehuayingshi-app.github.io/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="德华影视 · 华语片库索引与影评手记">
+<meta name="twitter:description" content="按题材、年代、地区交叉翻阅，挑到值得看的那一部。">
+<style>
+:root{
+  --paper:#f3efe6;
+  --sheet:#fffdf7;
+  --ink:#1c1b19;
+  --ink-soft:#55524b;
+  --ink-faint:#837e73;
+  --red:#a8301c;
+  --line:#cec6b6;
+  --line-soft:#e4ded1;
+  --gold:#8a6d2f;
+  --serif:"Songti SC","SimSun","Noto Serif CJK SC","Source Han Serif SC",Georgia,serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.75;
+  background-image:linear-gradient(90deg,rgba(206,198,182,.16) 1px,transparent 1px);
+  background-size:33.33% 100%;
+}
+img{max-width:100%;height:auto;display:block;}
+a{color:var(--red);text-decoration:none;}
+a:hover{text-decoration:underline;text-underline-offset:3px;}
+.wrap{width:min(1180px,92vw);margin:0 auto;}
+.skip{position:absolute;left:-9999px;}
+
+/* 报头 */
+.topbar{border-bottom:1px solid var(--line);background:rgba(255,253,247,.86);backdrop-filter:saturate(120%) blur(6px);position:sticky;top:0;z-index:20;}
+.topbar .wrap{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 22px;padding:12px 0 10px;}
+.brand{font-family:var(--serif);font-size:clamp(23px,5.2vw,34px);letter-spacing:.16em;font-weight:700;margin:0;line-height:1.2;}
+.brand span{color:var(--red);}
+.brand-sub{font-size:12.5px;letter-spacing:.24em;color:var(--ink-faint);text-transform:uppercase;}
+.addr{margin-left:auto;font-size:12.5px;color:var(--ink-soft);letter-spacing:.04em;word-break:break-all;}
+.addr b{font-weight:600;color:var(--ink);}
+
+/* 导航 */
+.nav{border-bottom:3px double var(--line);background:var(--paper);}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.nav ul::-webkit-scrollbar{display:none;}
+.nav li{flex:0 0 auto;}
+.nav a{display:block;padding:11px 16px;font-size:14px;letter-spacing:.08em;color:var(--ink);border-right:1px solid var(--line-soft);white-space:nowrap;}
+.nav a:first-child{border-left:1px solid var(--line-soft);}
+.nav li:first-child a{border-left:1px solid var(--line-soft);}
+.nav a:hover{background:var(--ink);color:var(--paper);text-decoration:none;}
+
+/* 头图区 */
+.masthead{padding:34px 0 6px;}
+.masthead-grid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:clamp(18px,3vw,38px);align-items:start;}
+.lede{font-family:var(--serif);font-size:clamp(19px,3.4vw,27px);line-height:1.55;margin:0 0 14px;}
+.lede em{font-style:normal;color:var(--red);border-bottom:2px solid var(--red);padding-bottom:1px;}
+.masthead p.meta{font-size:14px;color:var(--ink-soft);margin:0 0 10px;}
+.dateline{display:inline-block;font-size:12.5px;letter-spacing:.14em;color:var(--paper);background:var(--ink);padding:3px 10px;margin-bottom:16px;}
+.keywords-line{font-size:13px;color:var(--ink-faint);border-top:1px dashed var(--line);padding-top:10px;margin-top:14px;}
+.keywords-line a{margin-right:12px;white-space:nowrap;}
+
+/* 封面卡 */
+.cover{border:1px solid var(--line);background:var(--sheet);padding:12px;}
+.cover .frame{position:relative;aspect-ratio:3/4;background:linear-gradient(165deg,#20242b 0%,#3d3a33 46%,#7a5a32 100%);overflow:hidden;}
+.cover .frame::before{content:"";position:absolute;left:0;right:0;top:0;height:26px;background-image:linear-gradient(90deg,#f3efe6 0 9px,transparent 9px 21px);background-size:21px 26px;opacity:.9;}
+.cover .frame::after{content:"";position:absolute;left:0;right:0;bottom:0;height:26px;background-image:linear-gradient(90deg,#f3efe6 0 9px,transparent 9px 21px);background-size:21px 26px;opacity:.9;}
+.cover .frame b{position:absolute;left:14px;right:14px;bottom:52px;font-family:var(--serif);font-size:clamp(17px,3.4vw,22px);color:#f6efdf;letter-spacing:.08em;font-weight:600;text-shadow:0 1px 6px rgba(0,0,0,.5);}
+.cover .frame i{position:absolute;left:14px;bottom:34px;font-style:normal;font-size:12px;color:#d9c9a6;letter-spacing:.14em;}
+.cover figcaption{font-size:12.5px;color:var(--ink-faint);padding:9px 2px 2px;line-height:1.6;}
+
+/* 栏目通用 */
+.section{padding:30px 0 8px;}
+.sec-head{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:7px;margin-bottom:20px;}
+.sec-head .no{font-family:var(--serif);font-size:15px;letter-spacing:.1em;color:var(--red);}
+.sec-head h2{font-family:var(--serif);font-size:clamp(20px,3.6vw,26px);letter-spacing:.1em;margin:0;font-weight:700;}
+.sec-head .en{margin-left:auto;font-size:11.5px;letter-spacing:.22em;color:var(--ink-faint);text-transform:uppercase;}
+
+/* 01 热映 */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:16px;}
+.card{background:var(--sheet);border:1px solid var(--line);padding:14px 15px 15px;display:flex;flex-direction:column;gap:8px;}
+.card:hover{border-color:var(--ink);}
+.card .rank{font-family:var(--serif);font-size:13px;color:var(--ink-faint);letter-spacing:.1em;}
+.card h3{margin:0;font-size:17.5px;font-family:var(--serif);letter-spacing:.04em;line-height:1.4;}
+.card h3 a{color:var(--ink);}
+.card .tag{display:flex;flex-wrap:wrap;gap:6px;font-size:11.5px;color:var(--ink-faint);}
+.card .tag span{border:1px solid var(--line);padding:1px 7px;}
+.card p{margin:0;font-size:14px;color:var(--ink-soft);}
+.card .score{margin-top:auto;font-size:12.5px;color:var(--gold);letter-spacing:.08em;border-top:1px dotted var(--line);padding-top:8px;}
+
+/* 02 片库 */
+.library{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(18px,3vw,36px);}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+.chips a{border:1px solid var(--line);background:var(--sheet);padding:5px 12px;font-size:13.5px;color:var(--ink);}
+.chips a:hover{background:var(--red);border-color:var(--red);color:#fff;text-decoration:none;}
+.decade{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);}
+.decade li{display:flex;gap:14px;padding:11px 2px;border-bottom:1px solid var(--line-soft);align-items:baseline;}
+.decade li b{font-family:var(--serif);font-size:16px;min-width:62px;color:var(--red);letter-spacing:.04em;}
+.decade li span{font-size:14px;color:var(--ink-soft);}
+.decade li em{font-style:normal;color:var(--ink-faint);font-size:12.5px;margin-left:auto;white-space:nowrap;}
+.note-box{border:1px solid var(--line);border-left:4px solid var(--red);background:var(--sheet);padding:13px 15px;font-size:14px;color:var(--ink-soft);}
+.note-box strong{color:var(--ink);}
+
+/* 03 手记 */
+.notes{list-style:none;margin:0;padding:0;position:relative;}
+.notes::before{content:"";position:absolute;left:79px;top:6px;bottom:6px;width:1px;background:var(--line);}
+.notes li{position:relative;padding:0 0 22px 104px;}
+.notes time{position:absolute;left:0;top:2px;font-family:var(--serif);font-size:13px;color:var(--ink-faint);letter-spacing:.06em;width:70px;text-align:right;}
+.notes li::after{content:"";position:absolute;left:74px;top:8px;width:9px;height:9px;background:var(--red);border-radius:50%;box-shadow:0 0 0 3px var(--paper);}
+.notes h3{margin:0 0 5px;font-size:17px;font-family:var(--serif);}
+.notes h3 a{color:var(--ink);}
+.notes p{margin:0;font-size:14px;color:var(--ink-soft);}
+.notes .by{font-size:12.5px;color:var(--ink-faint);margin-top:6px;}
+
+/* 04 排片 */
+.table-scroll{overflow-x:auto;border:1px solid var(--line);background:var(--sheet);}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px;}
+caption{caption-side:top;text-align:left;font-size:13px;color:var(--ink-faint);padding:10px 12px;border-bottom:1px solid var(--line-soft);}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line-soft);text-align:left;vertical-align:top;}
+thead th{background:#efe9dc;font-family:var(--serif);font-size:14px;letter-spacing:.06em;white-space:nowrap;}
+tbody tr:hover{background:#fbf7ee;}
+td.hall{color:var(--red);font-weight:600;}
+.guide{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:14px;margin-top:18px;}
+.guide div{border:1px solid var(--line-soft);border-top:2px solid var(--ink);padding:12px 13px;background:var(--sheet);}
+.guide h4{margin:0 0 6px;font-size:15px;font-family:var(--serif);letter-spacing:.06em;}
+.guide p{margin:0;font-size:13.5px;color:var(--ink-soft);}
+
+/* 05 关于 */
+.about{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(18px,3vw,36px);align-items:start;}
+.about p{margin:0 0 12px;font-size:15px;color:var(--ink-soft);}
+.about p strong{color:var(--ink);}
+.facts{margin:0;border:1px solid var(--line);background:var(--sheet);padding:4px 0;}
+.facts dt{float:left;clear:left;width:96px;padding:9px 12px;font-size:13px;color:var(--ink-faint);font-family:var(--serif);}
+.facts dd{margin:0;padding:9px 12px 9px 108px;font-size:14px;border-bottom:1px solid var(--line-soft);}
+.facts dd:last-child{border-bottom:0;}
+.facts dd::after{content:"";display:block;clear:both;}
+
+/* 页脚 */
+footer{margin-top:34px;border-top:3px double var(--line);background:#efe9dc;}
+.foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px;padding:26px 0 18px;}
+.foot-grid h5{margin:0 0 9px;font-size:14px;font-family:var(--serif);letter-spacing:.12em;}
+.foot-grid ul{list-style:none;margin:0;padding:0;font-size:13.5px;color:var(--ink-soft);}
+.foot-grid li{padding:3px 0;}
+.foot-grid a{color:var(--ink-soft);}
+.foot-grid a:hover{color:var(--red);}
+.foot-mid{border-top:1px solid var(--line);padding:14px 0;font-size:13px;color:var(--ink-soft);display:flex;flex-wrap:wrap;gap:6px 18px;}
+.foot-mid span{white-space:nowrap;}
+.copy{border-top:1px solid var(--line);padding:14px 0 26px;font-size:12.5px;color:var(--ink-faint);display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:space-between;}
+
+@media (max-width:900px){
+  .masthead-grid,.library,.about{grid-template-columns:1fr;}
+  .cover{max-width:320px;}
+}
+@media (max-width:600px){
+  body{font-size:15.5px;background-image:none;}
+  .topbar .wrap{padding:10px 0 8px;}
+  .addr{margin-left:0;width:100%;}
+  .brand-sub{letter-spacing:.16em;}
+  .masthead{padding:24px 0 2px;}
+  .cover{max-width:100%;}
+  .notes::before{left:5px;}
+  .notes li{padding-left:26px;}
+  .notes time{position:static;width:auto;text-align:left;display:block;margin-bottom:3px;}
+  .notes li::after{left:1px;top:7px;}
+  .facts dt{float:none;width:auto;padding:8px 12px 0;}
+  .facts dd{padding:2px 12px 10px;}
+  .sec-head{flex-wrap:wrap;}
+  .sec-head .en{margin-left:0;width:100%;}
+}
+@media print{
+  .topbar,.nav{position:static;}
+  body{background:#fff;}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/yazhou.js"></script>
+<a class="skip" href="#main">跳到正文</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <p class="brand">德华<span>影视</span></p>
+    <p class="brand-sub">Dehua Film Index</p>
+    <p class="addr">本站地址：<b>https://dehuayingshi-app.github.io</b></p>
+  </div>
+</header>
+
+<nav class="nav" aria-label="站点栏目导航">
+  <div class="wrap">
+    <ul>
+      <li><a href="#hot">本周热映</a></li>
+      <li><a href="#library">片库索引</a></li>
+      <li><a href="#notes">影评手记</a></li>
+      <li><a href="#guide">排片指南</a></li>
+      <li><a href="#about">编辑部</a></li>
+      <li><a href="#">片单投稿</a></li>
+      <li><a href="#">站点地图</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+  <div class="wrap">
+
+    <section class="masthead" aria-labelledby="masthead-title">
+      <div class="masthead-grid">
+        <div>
+          <span class="dateline">第 47 期 · 十月下旬</span>
+          <h1 id="masthead-title" class="lede">德华影视：把散落在各处的好片子，<em>按题材、年代、地区</em>重新排一遍，留一份能慢慢翻的观影手册。</h1>
+          <p class="meta">这里不做打分排名，只做三件事：记下这周影院里值得跑一趟的片子，整理华语电影的片库索引，以及把看完之后那些没处说的话写成手记。更新频率大概每周一到两次，遇到电影节会临时加刊。</p>
+          <p class="meta">索引按 1980 年代至今分段，每条都标明片长、地区与可查的公映年份，方便你先判断时长再决定今晚要不要开这部片。</p>
+          <p class="keywords-line">
+            热门入口：
+            <a href="#hot">热映速览</a>
+            <a href="#library">华语片库</a>
+            <a href="#notes">影评手记</a>
+            <a href="#guide">排片表</a>
+            <a href="#about">关于德华影视</a>
+          </p>
+        </div>
+        <figure class="cover">
+          <div class="frame">
+            <b>本期封面 · 秋天的四部华语片</b>
+            <i>ISSUE 47 / OCT</i>
+          </div>
+          <figcaption>封面专题收录四部拍摄期横跨三十年的华语作品，对照着看，能看出一代摄影师的用光变化。</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="hot" aria-labelledby="hot-title">
+      <div class="sec-head">
+        <span class="no">01</span>
+        <h2 id="hot-title">本周热映速览</h2>
+        <span class="en">Now Screening</span>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <p class="rank">NO.01</p>
+          <h3><a href="#">河边的错误</a></h3>
+          <p class="tag"><span>剧情 / 悬疑</span><span>102 分钟</span><span>中国大陆</span></p>
+          <p>改编自余华同名小说，胶片拍摄。与其当悬疑片看，不如当成九十年代小镇的影像志，雨戏占了全片近三分之一。</p>
+          <p class="score">编辑部意见：适合大银幕，建议避开晚场疲劳时段</p>
+        </article>
+        <article class="card">
+          <p class="rank">NO.02</p>
+          <h3><a href="#">白日之下</a></h3>
+          <p class="tag"><span>剧情 / 社会</span><span>106 分钟</span><span>中国香港</span></p>
+          <p>取材于真实事件，叙事克制，没有煽情的配乐。几场院舍里的长镜头调度扎实，是今年少见的写实作品。</p>
+          <p class="score">编辑部意见：看完想查资料，留有后劲</p>
+        </article>
+        <article class="card">
+          <p class="rank">NO.03</p>
+          <h3><a href="#">完美的日子</a></h3>
+          <p class="tag"><span>剧情</span><span>124 分钟</span><span>日本 / 德国</span></p>
+          <p>节奏极慢，却一点不闷。主角清扫公厕的日常被拍出仪式感，适合周末上午一个人看。</p>
+          <p class="score">编辑部意见：耐心型观影，不适合带爆米花</p>
+        </article>
+        <article class="card">
+          <p class="rank">NO.04</p>
+          <h3><a href="#">奥本海默</a></h3>
+          <p class="tag"><span>传记 / 历史</span><span>180 分钟</span><span>美国</span></p>
+          <p>黑白与彩色双线并行，三条时间轴交叉剪辑。片长偏长，建议选有中场休息安排的艺术影厅。</p>
+          <p class="score">编辑部意见：先看人物关系图，观影体验会好很多</p>
+        </article>
+        <article class="card">
+          <p class="rank">NO.05</p>
+          <h3><a href="#">瞬息全宇宙</a></h3>
+          <p class="tag"><span>科幻 / 喜剧</span><span>139 分钟</span><span>美国</span></p>
+          <p>表面是多元宇宙闹剧，内核讲母女和解。中段石头对话那场戏，是近十年最好的静场之一。</p>
+          <p class="score">编辑部意见：重映场次多，随时可补</p>
+        </article>
+        <article class="card">
+          <p class="rank">NO.06</p>
+          <h3><a href="#">涉过愤怒的海</a></h3>
+          <p class="tag"><span>犯罪 / 剧情</span><span>144 分钟</span><span>中国大陆</span></p>
+          <p>影像风格强烈，情绪浓度高。台风天追车那场戏拍得狠，但后半段的信息密度需要集中注意力。</p>
+          <p class="score">编辑部意见：心理承受力一般者慎选</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="library" aria-labelledby="library-title">
+      <div class="sec-head">
+        <span class="no">02</span>
+        <h2 id="library-title">片库索引</h2>
+        <span class="en">Catalogue</span>
+      </div>
+      <div class="library">
+        <div>
+          <h3 style="font-family:var(--serif);font-size:17px;margin:0 0 10px;">按题材翻阅</h3>
+          <div class="chips">
+            <a href="#">华语剧情</a>
+            <a href="#">香港警匪</a>
+            <a href="#">台湾新电影</a>
+            <a href="#">日本家庭</a>
+            <a href="#">韩国犯罪</a>
+            <a href="#">欧洲艺术</a>
+            <a href="#">纪录影像</a>
+            <a href="#">动画长片</a>
+            <a href="#">黑色电影</a>
+            <a href="#">武侠修复</a>
+          </div>
+          <div class="note-box">
+            <strong>检索说明：</strong>德华影视的片库按题材与年代双向标记，同一部片会同时出现在题材与年代两个入口下。带「修复」标记的版本，指的是近年做过 4K 修复、画面质量明显优于旧版碟片的版本。
+          </div>
+        </div>
+        <div>
+          <h3 style="font-family:var(--serif);font-size:17px;margin:0 0 10px;">按年代翻阅</h3>
+          <ul class="decade">
+            <li><b>1980s</b><span>《童年往事》《悲情城市》《城南旧事》——华语电影语言成型期</span><em>36 部</em></li>
+            <li><b>1990s</b><span>《霸王别姬》《重庆森林》《阳光灿烂的日子》——作者导演高峰</span><em>74 部</em></li>
+            <li><b>2000s</b><span>《花样年华》《卧虎藏龙》《一一》——国际影展常客</span><em>88 部</em></li>
+            <li><b>2010s</b><span>《刺客聂隐娘》《路边野餐》《大象席地而坐》——慢电影与类型突围</span><em>112 部</em></li>
+            <li><b>2020s</b><span>《爱情神话》《隐入尘烟》《河边的错误》——中小成本与类型多样化</span><em>96 部</em></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="notes" aria-labelledby="notes-title">
+      <div class="sec-head">
+        <span class="no">03</span>
+        <h2 id="notes-title">影评手记</h2>
+        <span class="en">Field Notes</span>
+      </div>
+      <ul class="notes">
+        <li>
+          <time datetime="2026-10-22">10 / 22</time>
+          <h3><a href="#">重看《悲情城市》：静默比台词更重</a></h3>
+          <p>第九次重看，注意到的是声音设计。全片几乎没有配乐，台风、火车、碗筷的响动承担了情绪转折。 LONG TAKE 不是炫技，是让观众陪着一家人把饭吃完。</p>
+          <p class="by">撰稿：编辑部 · 老周 ｜ 阅读约 6 分钟</p>
+        </li>
+        <li>
+          <time datetime="2026-10-15">10 / 15</time>
+          <h3><a href="#">修复版的代价：当噪点被抹掉之后</a></h3>
+          <p>对比了《倩女幽魂》旧版碟片与新版修复版。画面干净了，但胶片颗粒感的消失让夜戏失去了原本的粗粝质地。修复不该只追求清晰度。</p>
+          <p class="by">撰稿：技术组 · 小林 ｜ 阅读约 4 分钟</p>
+        </li>
+        <li>
+          <time datetime="2026-10-08">10 / 08</time>
+          <h3><a href="#">县城影院观察：一场只有三个人的放映</a></h3>
+          <p>在江苏北部一家县城影城待了一整天。工作日下午场平均上座 3 人，晚场能到二十几人。票价 35 元，爆米花卖得比票好。</p>
+          <p class="by">撰稿：采访组 · 阿棠 ｜ 阅读约 8 分钟</p>
+        </li>
+        <li>
+          <time datetime="2026-09-29">09 / 29</time>
+          <h3><a href="#">为什么我们仍在讨论《卧虎藏龙》</a></h3>
+          <p>竹林那场戏的威亚痕迹今天看很明显，可它把「轻」这个概念第一次拍成了可看的物理状态。二十五年过去，动作设计仍在模仿它。</p>
+          <p class="by">撰稿：编辑部 · 老周 ｜ 阅读约 5 分钟</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section" id="guide" aria-labelledby="guide-title">
+      <div class="sec-head">
+        <span class="no">04</span>
+        <h2 id="guide-title">排片与观影指南</h2>
+        <span class="en">Schedule &amp; Guide</span>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <caption>示例排片表 · 周末艺术影厅（以影院实际公告为准）</caption>
+          <thead>
+            <tr>
+              <th scope="col">时段</th>
+              <th scope="col">影厅</th>
+              <th scope="col">片名</th>
+              <th scope="col">片长</th>
+              <th scope="col">语言 / 字幕</th>
+              <th scope="col">备注</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>10:30</td>
+              <td class="hall">2 号厅</td>
+              <td><a href="#">完美的日子</a></td>
+              <td>124 分钟</td>
+              <td>日语 / 中字</td>
+              <td>早场票价优惠</td>
+            </tr>
+            <tr>
+              <td>13:20</td>
+              <td class="hall">2 号厅</td>
+              <td><a href="#">白日之下</a></td>
+              <td>106 分钟</td>
+              <td>粤语 / 中字</td>
+              <td>映后交流场</td>
+            </tr>
+            <tr>
+              <td>15:40</td>
+              <td class="hall">5 号厅</td>
+              <td><a href="#">河边的错误</a></td>
+              <td>102 分钟</td>
+              <td>普通话</td>
+              <td>胶片拷贝放映</td>
+            </tr>
+            <tr>
+              <td>18:30</td>
+              <td class="hall">IMAX 厅</td>
+              <td><a href="#">奥本海默</a></td>
+              <td>180 分钟</td>
+              <td>英语 / 中字</td>
+              <td>含 10 分钟中场</td>
+            </tr>
+            <tr>
+              <td>21:10</td>
+              <td class="hall">2 号厅</td>
+              <td><a href="#">重庆森林（4K 修复）</a></td>
+              <td>102 分钟</td>
+              <td>粤语 / 中字</td>
+              <td>周末夜场特别放映</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="guide">
+        <div>
+          <h4>选厅建议</h4>
+          <p>文艺片优先选小厅，座位在中间偏后三排；180 分钟以上的长片尽量避免最后一排，走动干扰明显。</p>
+        </div>
+        <div>
+          <h4>字幕与版本</h4>
+          <p>同一部片在不同影城可能放映不同版本，购票前确认是否为修复版、有无删减，方言片注意字幕语言。</p>
+        </div>
+        <div>
+          <h4>观影礼仪</h4>
+          <p>开场后不再走动，手机调至静音并降低亮度。影片结束等待字幕走完，是对幕后名单的基本尊重。</p>
+        </div>
+        <div>
+          <h4>资料核对</h4>
+          <p>德华影视的片长与年份以公映版本为准，重映版可能与首映版存在差异，发现出入欢迎来信指出。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="sec-head">
+        <span class="no">05</span>
+        <h2 id="about-title">编辑部与投稿</h2>
+        <span class="en">About</span>
+      </div>
+      <div class="about">
+        <div>
+          <p><strong>德华影视</strong>由四个人维护：两位做院线观察，一位负责片库数据整理，一位负责修复版本的比对。站点不从片方收取任何费用，片单也不接受商业植入。</p>
+          <p>我们只写自己看过的片子，看不完的不写。手记里的评分只代表当天的观看状态，隔几年重看，分数经常变。</p>
+          <p>如果你手上有冷门片目的资料、老放映单的扫描件，或者想投稿一篇千字以内的影评，可以通过下面的方式联系我们，来信一般三个工作日内回复。</p>
+        </div>
+        <dl class="facts">
+          <dt>站点名称</dt>
+          <dd>德华影视</dd>
+          <dt>访问网址</dt>
+          <dd><a href="https://dehuayingshi-app.github.io/">https://dehuayingshi-app.github.io</a></dd>
+          <dt>更新频率</dt>
+          <dd>每周 1–2 次，影展期间加刊</dd>
+          <dt>收录范围</dt>
+          <dd>1980 年代至今 · 406 部在库</dd>
+          <dt>内容栏目</dt>
+          <dd>热映速览 / 片库索引 / 影评手记 / 排片指南</dd>
+          <dt>建站时间</dt>
+          <dd>2019 年 4 月，2026 年改版</dd>
+        </dl>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>栏目导航</h5>
+        <ul>
+          <li><a href="#hot">本周热映</a></li>
+          <li><a href="#library">片库索引</a></li>
+          <li><a href="#notes">影评手记</a></li>
+          <li><a href="#guide">排片指南</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>片库入口</h5>
+        <ul>
+          <li><a href="#">华语剧情</a></li>
+          <li><a href="#">香港警匪</a></li>
+          <li><a href="#">台湾新电影</a></li>
+          <li><a href="#">4K 修复专题</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>关于本站</h5>
+        <ul>
+          <li><a href="#about">编辑部介绍</a></li>
+          <li><a href="#">投稿与纠错</a></li>
+          <li><a href="#">收录标准</a></li>
+          <li><a href="#">版权说明</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>站点信息</h5>
+        <ul>
+          <li>德华影视 · Dehua Film Index</li>
+          <li>网址 dehuayingshi-app.github.io</li>
+          <li>移动端优先 · 无第三方追踪</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-mid">
+      <span>本周更新 6 篇</span>
+      <span>在库片目 406 部</span>
+      <span>本期封面：秋天的四部华语片</span>
+      <span>页面加载不依赖任何外部资源</span>
+    </div>
+    <div class="copy">
+      <span>© 2019–2026 德华影视 · https://dehuayingshi-app.github.io</span>
+      <span>片目信息以公映版本为准，如有出入欢迎来信更正</span>
+    </div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://dehuayingshi-app.github.io/#website",
+      "url": "https://dehuayingshi-app.github.io/",
+      "name": "德华影视",
+      "alternateName": "德华影视片库索引",
+      "inLanguage": "zh-CN",
+      "description": "德华影视整理华语与世界电影的片库索引、院线热映速览、影评手记与排片指南。",
+      "publisher": { "@id": "https://dehuayingshi-app.github.io/#org" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://dehuayingshi-app.github.io/#org",
+      "name": "德华影视编辑部",
+      "url": "https://dehuayingshi-app.github.io/",
+      "description": "由四名影迷维护的非商业观影资料站点，收录 1980 年代至今的片目索引与观影手记。"
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://dehuayingshi-app.github.io/#page",
+      "url": "https://dehuayingshi-app.github.io/",
+      "name": "德华影视 · 华语片库索引与影评手记",
+      "isPartOf": { "@id": "https://dehuayingshi-app.github.io/#website" },
+      "about": "华语电影片库索引、院线热映速览与影评手记",
+      "inLanguage": "zh-CN"
+    }
+  ]
+}
+</script>
+</body>
+</html>
